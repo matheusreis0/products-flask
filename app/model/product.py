@@ -60,6 +60,36 @@ class Product(Base, BaseModel):
         self.__price = price
         super().__init__(id, created_at, updated_at)
 
+    def to_json(self):
+        return {
+            'id': self.id,
+            'created_at': self.created_at,
+            'updated_at': self.updated_at,
+            'origin': self.origin,
+            'sku': self.sku,
+            'seller_id': self.seller_id,
+            'product_code': self.product_code,
+            'gtin': self.gtin,
+            'name': self.name,
+            'status': self.status,
+            'brand': self.brand,
+            'description': self.description,
+            'free_shipping': self.free_shipping,
+            'group_id': self.group_id,
+            'tax_information_id': self.tax_information_id,
+            'approved': self.approved,
+            'rejection_reasons': self.rejection_reasons,
+            'active': self.active,
+            'part_number': self.part_number,
+            'in_campaign': self.in_campaign,
+            'odin': self.odin,
+            'waiting_invoice': self.waiting_invoice,
+            'controller_gtin_id': self.controller_gtin_id,
+            'currency': self.currency,
+            'offer': self.offer,
+            'price': self.price,
+        }
+
     @property
     def origin(self) -> str:
         return self.__origin
