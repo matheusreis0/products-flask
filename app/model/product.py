@@ -31,3 +31,195 @@ class Product(Base, BaseModel):
 
     def __init__(self):
         super().__init__()
+
+    @property
+    def origin(self) -> str:
+        return self.__origin
+
+    @origin.setter
+    def origin(self, origin: str):
+        self.__origin = origin
+
+    @property
+    def sku(self) -> str:
+        return self.__sku
+
+    @sku.setter
+    def sku(self, sku: str):
+        self.__sku = sku
+
+    @property
+    def seller_id(self) -> str:
+        return self.__seller_id
+
+    @seller_id.setter
+    def seller_id(self, seller_id: str):
+        self.__seller_id = seller_id
+
+    @property
+    def product_code(self) -> str:
+        return self.__product_code
+
+    @product_code.setter
+    def product_code(self, product_code: str):
+        self.__product_code = product_code
+
+    @property
+    def gtin(self) -> str:
+        return self.__gtin
+
+    @gtin.setter
+    def gtin(self, gtin: str):
+        self.__gtin = gtin
+
+    @property
+    def name(self) -> str:
+        return self.__name
+
+    @name.setter
+    def name(self, name: str):
+        self.__name = name
+
+    @property
+    def status(self) -> str:
+        return self.__status
+
+    @status.setter
+    def status(self, status: str):
+        self.__status = status
+
+    @property
+    def brand(self) -> str:
+        return self.__brand
+
+    @brand.setter
+    def brand(self, brand: str):
+        self.__brand = brand
+
+    @property
+    def description(self) -> str:
+        return self.__description
+
+    @description.setter
+    def description(self, description: str):
+        self.__description = description
+
+    @property
+    def free_shipping(self) -> bool:
+        return self.__free_shipping
+
+    @free_shipping.setter
+    def free_shipping(self, free_shipping: bool):
+        self.__free_shipping = free_shipping
+
+    @property
+    def group_id(self) -> str:
+        return self.__group_id
+
+    @group_id.setter
+    def group_id(self, group_id: str):
+        self.__group_id = group_id
+
+    @property
+    def tax_information_id(self) -> str:
+        return self.__tax_information_id
+
+    @tax_information_id.setter
+    def tax_information_id(self, tax_information_id: str):
+        self.__tax_information_id = tax_information_id
+
+    @property
+    def approved(self) -> bool:
+        return self.__approved
+
+    @approved.setter
+    def approved(self, approved: bool):
+        self.__approved = approved
+
+    @property
+    def rejection_reasons(self) -> str:
+        return self.__rejection_reasons
+
+    @rejection_reasons.setter
+    def rejection_reasons(self, rejection_reasons: str):
+        self.__rejection_reasons = rejection_reasons
+
+    @property
+    def active(self) -> bool:
+        return self.__active
+
+    @active.setter
+    def active(self, active: bool):
+        self.__active = active
+
+    @property
+    def part_number(self) -> str:
+        return self.__part_number
+
+    @part_number.setter
+    def part_number(self, part_number: str):
+        self.__part_number = part_number
+
+    @property
+    def in_campaign(self) -> str:
+        return self.__in_campaign
+
+    @in_campaign.setter
+    def in_campaign(self, in_campaign: str):
+        self.__in_campaign = in_campaign
+
+    @property
+    def odin(self) -> str:
+        return self.__odin
+
+    @odin.setter
+    def odin(self, odin: str):
+        self.__odin = odin
+
+    @property
+    def waiting_invoice(self) -> bool:
+        return self.__waiting_invoice
+
+    @waiting_invoice.setter
+    def waiting_invoice(self, waiting_invoice: bool):
+        self.__waiting_invoice = waiting_invoice
+
+    @property
+    def controller_gtin_id(self) -> str:
+        return self.__controller_gtin_id
+
+    @controller_gtin_id.setter
+    def controller_gtin_id(self, controller_gtin_id: str):
+        self.__controller_gtin_id = controller_gtin_id
+
+    @property
+    def currency(self) -> str:
+        return self.__currency
+
+    @currency.setter
+    def currency(self, currency: str):
+        self.__currency = currency
+
+    @property
+    def offer(self) -> float:
+        return self.__offer
+
+    @offer.setter
+    def offer(self, offer: float):
+        self.__offer = offer
+
+    @property
+    def price(self) -> bool:
+        return self.__price
+
+    @price.setter
+    def price(self, price: bool):
+        self.__price = price
+
+    @property
+    def inactive_reason(self) -> str:
+        return self.__inactive_reason
+
+    @inactive_reason.setter
+    def inactive_reason(self, inactive_reason: str):
+        self.__inactive_reason = inactive_reason
