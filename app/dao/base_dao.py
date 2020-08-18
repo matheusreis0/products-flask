@@ -22,13 +22,22 @@ class BaseDao:
         self.__session = Session()
 
     def read(self, id: str = ''):
-        pass
+        if id:
+            return self.__session.query(self.__model_class).get(id)
+        return self.__session.query(self.__model_class).all()
 
     def insert(self, model):
-        pass
+        self.__session.add(model)
+        self.__session.commit()
+        return model.id
 
     def update(self, model):
-        pass
+        self.__session.merge(model)
+        self.__session.commit()
+        return model
 
     def delete(self, id):
-        pass
+        model = self.read(id)
+        self.__session.delete(model)
+        self.__session.commit()
+        return {}
