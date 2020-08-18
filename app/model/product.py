@@ -29,8 +29,36 @@ class Product(Base, BaseModel):
     __price = db.Column('price', db.Numeric())
     __inactive_reason = db.Column('inactive_reason', db.String(length=64))
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, origin: str = '', sku: str = '', seller_id: str = '', product_code: str = '', gtin: str = ''
+                 , name: str = '', status: str = '', brand: str = '', description: str = '', free_shipping: bool = False
+                 , group_id: str = '', tax_information_id: str = '', approved: bool = '', rejection_reasons: str = ''
+                 , active: bool = False, part_number: str = '', in_campaign: bool = False, odin: str = ''
+                 , waiting_invoice: str = '', controller_gtin_id: str = '', currency: str = '', offer: float = 0.0
+                 , price: float = 0.0, id: str = '', created_at: str = '', updated_at: str = ''):
+        self.__origin = origin
+        self.__sku = sku
+        self.__seller_id = seller_id
+        self.__product_code = product_code
+        self.__gtin = gtin
+        self.__name = name
+        self.__status = status
+        self.__brand = brand
+        self.__description = description
+        self.__free_shipping = free_shipping
+        self.__group_id = group_id
+        self.__tax_information_id = tax_information_id
+        self.__approved = approved
+        self.__rejection_reasons = rejection_reasons
+        self.__active = active
+        self.__part_number = part_number
+        self.__in_campaign = in_campaign
+        self.__odin = odin
+        self.__waiting_invoice = waiting_invoice
+        self.__controller_gtin_id = controller_gtin_id
+        self.__currency = currency
+        self.__offer = offer
+        self.__price = price
+        super().__init__(id, created_at, updated_at)
 
     @property
     def origin(self) -> str:
