@@ -3,7 +3,11 @@ Flask API to access products database
 
 ## Requirements
 - Choose a python3.7 virtual environment
-- Install pip requirements
+- Install requirements
+```
+pip install -r requirements.txt
+```
+- To update requirements.txt
 ```
 pip freeze > requirements.txt
 ```
