@@ -33,7 +33,7 @@ class Product(Base, BaseModel):
                  , name: str = '', status: str = '', brand: str = '', description: str = '', free_shipping: bool = False
                  , group_id: str = '', tax_information_id: str = '', approved: bool = '', rejection_reasons: str = ''
                  , active: bool = False, part_number: str = '', in_campaign: bool = False, odin: str = ''
-                 , waiting_invoice: str = '', controller_gtin_id: str = '', currency: str = '', offer: float = 0.0
+                 , waiting_invoice: bool = '', controller_gtin_id: str = '', currency: str = '', offer: float = 0.0
                  , price: float = 0.0, id: str = '', created_at: str = '', updated_at: str = ''):
         self.__origin = origin
         self.__sku = sku
@@ -219,11 +219,11 @@ class Product(Base, BaseModel):
         self.__part_number = part_number
 
     @property
-    def in_campaign(self) -> str:
+    def in_campaign(self) -> bool:
         return self.__in_campaign
 
     @in_campaign.setter
-    def in_campaign(self, in_campaign: str):
+    def in_campaign(self, in_campaign: bool):
         self.__in_campaign = in_campaign
 
     @property
@@ -267,11 +267,11 @@ class Product(Base, BaseModel):
         self.__offer = offer
 
     @property
-    def price(self) -> bool:
+    def price(self) -> float:
         return self.__price
 
     @price.setter
-    def price(self, price: bool):
+    def price(self, price: float):
         self.__price = price
 
     @property
