@@ -34,7 +34,7 @@ class Product(Base, BaseModel):
                  , group_id: str = '', tax_information_id: str = '', approved: bool = '', rejection_reasons: str = ''
                  , active: bool = False, part_number: str = '', in_campaign: bool = False, odin: str = ''
                  , waiting_invoice: bool = '', controller_gtin_id: str = '', currency: str = '', offer: float = 0.0
-                 , price: float = 0.0, id: str = '', created_at: str = '', updated_at: str = ''):
+                 , price: float = 0.0):
         self.__origin = origin
         self.__sku = sku
         self.__seller_id = seller_id
@@ -58,7 +58,6 @@ class Product(Base, BaseModel):
         self.__currency = currency
         self.__offer = offer
         self.__price = price
-        super().__init__(id=id, created_at=created_at, updated_at=updated_at)
 
     def to_dict(self) -> dict:
         return {

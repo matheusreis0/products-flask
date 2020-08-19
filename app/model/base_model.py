@@ -1,18 +1,19 @@
 import sqlalchemy as db
 from sqlalchemy.ext.declarative import declarative_base
+import uuid
+import datetime
 Base = declarative_base()
+
+
+def timestamp_now():
+    return str(datetime.datetime.now())[:-7]
 
 
 class BaseModel:
 
-    __id = db.Column('id', db.String(length=36), primary_key=True)
-    __created_at = db.Column('created_at', db.TIMESTAMP())
-    __updated_at = db.Column('updated_at', db.TIMESTAMP())
-
-    def __init__(self, id: str = '', created_at:str = '', updated_at: str = ''):
-        self.__id = id
-        self.__created_at = created_at
-        self.__updated_at = updated_at
+    __id = db.Column('id', db.String(length=36), primary_key=True, default=str(uuid.uuid4()))
+    __created_at = db.Column('created_at', db.TIMESTAMP(), default=timestamp_now())
+    __updated_at = db.Column('updated_at', db.TIMESTAMP(), default=timestamp_now())
 
     @property
     def id(self) -> str:

@@ -11,12 +11,12 @@ class ProductDao(BaseDao):
     def read(self, id: str = ''):
         return super().read(id)
 
-    def create(self, model):
+    def create(self, model: Product) -> Product:
         model.id = super().insert(model)
         return model
 
-    def update(self, model):
+    def update(self, model: Product) -> Product:
         return super().update(model)
 
-    def delete(self, id):
+    def delete(self, id) -> dict:
         return super().delete(id)

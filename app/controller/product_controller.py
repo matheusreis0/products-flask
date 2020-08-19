@@ -16,7 +16,10 @@ class ProductController(Resource):
         return jsonify([product.to_dict() for product in self.__dao.read()])
 
     def post(self):
-        pass
+        data = request.get_json()
+        product = Product(**data)
+        model = self.__dao.create(product)
+        return jsonify(model.to_dict())
 
     def put(self, uuid):
         data = request.get_json()
