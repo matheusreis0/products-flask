@@ -10,8 +10,10 @@ class ProductController(Resource):
     def __init__(self):
         self.__dao = ProductDao()
 
-    def get(self):
-        pass
+    def get(self, uuid = None):
+        if uuid:
+            return jsonify(self.__dao.read(uuid).to_dict())
+        return jsonify([product.to_dict() for product in self.__dao.read()])
 
     def post(self):
         pass

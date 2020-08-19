@@ -8,6 +8,6 @@ app = Flask(__name__)
 api = Api(app)
 cors = CORS(app)
 
-api.add_resource(ProductController, '/api/product/', '/api/product/<str: id>', endpoint='products')
+api.add_resource(ProductController, '/api/product/', '/api/product/<uuid>', endpoint='products')
 
-app.run()
+app.run(debug=True)

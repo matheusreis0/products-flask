@@ -60,7 +60,7 @@ class Product(Base, BaseModel):
         self.__price = price
         super().__init__(id, created_at, updated_at)
 
-    def to_json(self):
+    def to_dict(self) -> dict:
         return {
             'id': self.id,
             'created_at': self.created_at,
