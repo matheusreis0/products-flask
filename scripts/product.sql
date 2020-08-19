@@ -1,10 +1,10 @@
 CREATE TABLE padawans02.product (
-	origin varchar(16) DEFAULT origin NOT NULL,
+	origin varchar(16) NOT NULL,
 	created_at TIMESTAMP NOT NULL,
 	updated_at TIMESTAMP NOT NULL,
-	id BINARY(16) NOT NULL,
+	id varchar(36) NOT NULL,
 	sku varchar(16) NOT NULL,
-	seller_id BINARY(16) NOT NULL,
+	seller_id varchar(36) NOT NULL,
 	product_code varchar(64) NOT NULL,
 	gtin varchar(14) NOT NULL,
 	name varchar(128) NOT NULL,
@@ -13,7 +13,7 @@ CREATE TABLE padawans02.product (
 	description TEXT NOT NULL,
 	free_shipping BOOL NOT NULL,
 	group_id varchar(16) NOT NULL,
-	tax_information_id BINARY(16) NULL,
+	tax_information_id varchar(36) NULL,
 	approved BOOL NOT NULL,
 	rejection_reasons TEXT NULL,
 	active BOOL NOT NULL,
@@ -21,7 +21,7 @@ CREATE TABLE padawans02.product (
 	in_campaign BOOL NOT NULL,
 	odin varchar(64) NOT NULL,
 	waiting_invoice BOOL NOT NULL,
-	controller_gtin_id BINARY(16) NULL,
+	controller_gtin_id varchar(36) NULL,
 	currency varchar(3) NOT NULL,
 	offer NUMERIC NOT NULL,
 	price NUMERIC NOT NULL,
@@ -31,3 +31,5 @@ CREATE TABLE padawans02.product (
 ENGINE=InnoDB
 DEFAULT CHARSET=latin1
 COLLATE=latin1_swedish_ci;
+
+CREATE TRIGGER insert_product_uuid BEFORE INSERT ON padawans02.product FOR EACH ROW SET NEW.id = UUID();
