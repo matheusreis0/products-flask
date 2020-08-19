@@ -18,8 +18,12 @@ class ProductController(Resource):
     def post(self):
         pass
 
-    def put(self):
-        pass
+    def put(self, uuid):
+        data = request.get_json()
+        product = Product(**data)
+        product.id = uuid
+        model = self.__dao.update(product)
+        return jsonify(model.to_dict())
 
     def delete(self, uuid=None):
         return jsonify(self.__dao.delete(uuid))

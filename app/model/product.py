@@ -58,7 +58,7 @@ class Product(Base, BaseModel):
         self.__currency = currency
         self.__offer = offer
         self.__price = price
-        super().__init__(id, created_at, updated_at)
+        super().__init__(id=id, created_at=created_at, updated_at=updated_at)
 
     def to_dict(self) -> dict:
         return {
