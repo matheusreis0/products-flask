@@ -12,8 +12,7 @@ class ProductDao(BaseDao):
         return super().read(id)
 
     def create(self, model: Product) -> Product:
-        model.id = super().insert(model)
-        return model
+        return super().insert(model)
 
     def update(self, model: Product) -> Product:
         return super().update(model)

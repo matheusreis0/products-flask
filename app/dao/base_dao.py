@@ -29,12 +29,12 @@ class BaseDao:
     def insert(self, model):
         self.__session.add(model)
         self.__session.commit()
-        return model.id
+        return model
 
     def update(self, model):
         self.__session.merge(model)
         self.__session.commit()
-        return model
+        return self.read(model.id)
 
     def delete(self, id):
         model = self.read(id)
