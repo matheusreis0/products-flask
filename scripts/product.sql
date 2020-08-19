@@ -31,5 +31,3 @@ CREATE TABLE padawans02.product (
 ENGINE=InnoDB
 DEFAULT CHARSET=latin1
 COLLATE=latin1_swedish_ci;
-
-CREATE TRIGGER insert_product_uuid BEFORE INSERT ON padawans02.product FOR EACH ROW SET NEW.id = UUID();
