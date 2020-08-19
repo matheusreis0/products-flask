@@ -10,7 +10,7 @@ class ProductController(Resource):
     def __init__(self):
         self.__dao = ProductDao()
 
-    def get(self, uuid = None):
+    def get(self, uuid=None):
         if uuid:
             return jsonify(self.__dao.read(uuid).to_dict())
         return jsonify([product.to_dict() for product in self.__dao.read()])
@@ -21,5 +21,5 @@ class ProductController(Resource):
     def put(self):
         pass
 
-    def delete(self):
-        pass
+    def delete(self, uuid=None):
+        return jsonify(self.__dao.delete(uuid))
