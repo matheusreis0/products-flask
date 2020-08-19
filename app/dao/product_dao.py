@@ -1,12 +1,12 @@
-# from app.dao.base_dao import BaseDao
-# from app.model.product import Product
+from app.dao.base_dao import BaseDao
+from app.model.product import Product
 
 
-class ProductDao:
+class ProductDao(BaseDao):
 
     def __init__(self):
         self.__table_name = 'product'
-        super().__init__()
+        super().__init__(Product)
 
     def read(self, id: str = ''):
         return super().read(id)
