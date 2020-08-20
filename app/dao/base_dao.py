@@ -1,3 +1,4 @@
+from sqlalchemy import exc
 import sqlalchemy as db
 from sqlalchemy.orm.session import sessionmaker
 
@@ -21,23 +22,42 @@ class BaseDao:
         Session.configure(bind=engine)
         self.__session = Session()
 
+    def __read_one(self, id: str):
+        model = self.__session.query(self.__model_class).get(id)
+        if model:
+            return model
+        return {}
+
     def read(self, id: str = ''):
         if id:
-            return self.__session.query(self.__model_class).get(id)
-        return self.__session.query(self.__model_class).all()
+            return self.__read_one(id)
+        rows = self.__session.query(self.__model_class).all()
+        return rows
 
     def insert(self, model):
         self.__session.add(model)
-        self.__session.commit()
-        return model
+        if self.__try_commit():
+            return model
+        return {'success': False}
 
     def update(self, model):
-        self.__session.merge(model)
-        self.__session.commit()
-        return self.read(model.id)
+        if not type(self.__read_one(model.id)) == dict:
+            self.__session.merge(model)
+            if self.__try_commit():
+                return self.__read_one(model.id)
+        return {'success': False}
 
     def delete(self, id):
         model = self.read(id)
-        self.__session.delete(model)
-        self.__session.commit()
-        return {}
+        if not type(model) == dict:
+            self.__session.delete(model)
+            if self.__try_commit():
+                return {'success': True}
+        return {'success': False}
+
+    def __try_commit(self) -> bool:
+        try:
+            self.__session.commit()
+            return True
+        except exc.SQLAlchemyError:
+            return False
