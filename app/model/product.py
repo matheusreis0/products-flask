@@ -34,7 +34,7 @@ class Product(Base, BaseModel):
                  , group_id: str = '', tax_information_id: str = '', approved: bool = '', rejection_reasons: str = ''
                  , active: bool = False, part_number: str = '', in_campaign: bool = False, odin: str = ''
                  , waiting_invoice: bool = '', controller_gtin_id: str = '', currency: str = '', offer: float = 0.0
-                 , price: float = 0.0, id: str = '', created_at: str = '', updated_at: str = ''):
+                 , price: float = 0.0):
         self.__origin = origin
         self.__sku = sku
         self.__seller_id = seller_id
@@ -58,9 +58,8 @@ class Product(Base, BaseModel):
         self.__currency = currency
         self.__offer = offer
         self.__price = price
-        super().__init__(id, created_at, updated_at)
 
-    def to_json(self):
+    def to_dict(self) -> dict:
         return {
             'id': self.id,
             'created_at': self.created_at,
@@ -92,7 +91,7 @@ class Product(Base, BaseModel):
 
     @property
     def origin(self) -> str:
-        return self.__origin
+        return str(self.__origin)
 
     @origin.setter
     def origin(self, origin: str):
@@ -100,7 +99,7 @@ class Product(Base, BaseModel):
 
     @property
     def sku(self) -> str:
-        return self.__sku
+        return str(self.__sku)
 
     @sku.setter
     def sku(self, sku: str):
@@ -108,7 +107,7 @@ class Product(Base, BaseModel):
 
     @property
     def seller_id(self) -> str:
-        return self.__seller_id
+        return str(self.__seller_id)
 
     @seller_id.setter
     def seller_id(self, seller_id: str):
@@ -116,7 +115,7 @@ class Product(Base, BaseModel):
 
     @property
     def product_code(self) -> str:
-        return self.__product_code
+        return str(self.__product_code)
 
     @product_code.setter
     def product_code(self, product_code: str):
@@ -124,7 +123,7 @@ class Product(Base, BaseModel):
 
     @property
     def gtin(self) -> str:
-        return self.__gtin
+        return str(self.__gtin)
 
     @gtin.setter
     def gtin(self, gtin: str):
@@ -132,7 +131,7 @@ class Product(Base, BaseModel):
 
     @property
     def name(self) -> str:
-        return self.__name
+        return str(self.__name)
 
     @name.setter
     def name(self, name: str):
@@ -140,7 +139,7 @@ class Product(Base, BaseModel):
 
     @property
     def status(self) -> str:
-        return self.__status
+        return str(self.__status)
 
     @status.setter
     def status(self, status: str):
@@ -148,7 +147,7 @@ class Product(Base, BaseModel):
 
     @property
     def brand(self) -> str:
-        return self.__brand
+        return str(self.__brand)
 
     @brand.setter
     def brand(self, brand: str):
@@ -156,7 +155,7 @@ class Product(Base, BaseModel):
 
     @property
     def description(self) -> str:
-        return self.__description
+        return str(self.__description)
 
     @description.setter
     def description(self, description: str):
@@ -164,7 +163,7 @@ class Product(Base, BaseModel):
 
     @property
     def free_shipping(self) -> bool:
-        return self.__free_shipping
+        return bool(self.__free_shipping)
 
     @free_shipping.setter
     def free_shipping(self, free_shipping: bool):
@@ -172,7 +171,7 @@ class Product(Base, BaseModel):
 
     @property
     def group_id(self) -> str:
-        return self.__group_id
+        return str(self.__group_id)
 
     @group_id.setter
     def group_id(self, group_id: str):
@@ -180,7 +179,7 @@ class Product(Base, BaseModel):
 
     @property
     def tax_information_id(self) -> str:
-        return self.__tax_information_id
+        return str(self.__tax_information_id)
 
     @tax_information_id.setter
     def tax_information_id(self, tax_information_id: str):
@@ -188,7 +187,7 @@ class Product(Base, BaseModel):
 
     @property
     def approved(self) -> bool:
-        return self.__approved
+        return bool(self.__approved)
 
     @approved.setter
     def approved(self, approved: bool):
@@ -196,7 +195,7 @@ class Product(Base, BaseModel):
 
     @property
     def rejection_reasons(self) -> str:
-        return self.__rejection_reasons
+        return str(self.__rejection_reasons)
 
     @rejection_reasons.setter
     def rejection_reasons(self, rejection_reasons: str):
@@ -204,7 +203,7 @@ class Product(Base, BaseModel):
 
     @property
     def active(self) -> bool:
-        return self.__active
+        return bool(self.__active)
 
     @active.setter
     def active(self, active: bool):
@@ -212,7 +211,7 @@ class Product(Base, BaseModel):
 
     @property
     def part_number(self) -> str:
-        return self.__part_number
+        return str(self.__part_number)
 
     @part_number.setter
     def part_number(self, part_number: str):
@@ -220,7 +219,7 @@ class Product(Base, BaseModel):
 
     @property
     def in_campaign(self) -> bool:
-        return self.__in_campaign
+        return bool(self.__in_campaign)
 
     @in_campaign.setter
     def in_campaign(self, in_campaign: bool):
@@ -228,7 +227,7 @@ class Product(Base, BaseModel):
 
     @property
     def odin(self) -> str:
-        return self.__odin
+        return str(self.__odin)
 
     @odin.setter
     def odin(self, odin: str):
@@ -236,7 +235,7 @@ class Product(Base, BaseModel):
 
     @property
     def waiting_invoice(self) -> bool:
-        return self.__waiting_invoice
+        return bool(self.__waiting_invoice)
 
     @waiting_invoice.setter
     def waiting_invoice(self, waiting_invoice: bool):
@@ -244,7 +243,7 @@ class Product(Base, BaseModel):
 
     @property
     def controller_gtin_id(self) -> str:
-        return self.__controller_gtin_id
+        return str(self.__controller_gtin_id)
 
     @controller_gtin_id.setter
     def controller_gtin_id(self, controller_gtin_id: str):
@@ -252,7 +251,7 @@ class Product(Base, BaseModel):
 
     @property
     def currency(self) -> str:
-        return self.__currency
+        return str(self.__currency)
 
     @currency.setter
     def currency(self, currency: str):
@@ -260,7 +259,7 @@ class Product(Base, BaseModel):
 
     @property
     def offer(self) -> float:
-        return self.__offer
+        return float(self.__offer)
 
     @offer.setter
     def offer(self, offer: float):
@@ -268,7 +267,7 @@ class Product(Base, BaseModel):
 
     @property
     def price(self) -> float:
-        return self.__price
+        return float(self.__price)
 
     @price.setter
     def price(self, price: float):
@@ -276,7 +275,7 @@ class Product(Base, BaseModel):
 
     @property
     def inactive_reason(self) -> str:
-        return self.__inactive_reason
+        return str(self.__inactive_reason)
 
     @inactive_reason.setter
     def inactive_reason(self, inactive_reason: str):
