@@ -16,7 +16,8 @@ def date_object(data):
         'second': data.second,
         'day': data.day,
         'month': data.month,
-        'year': data.year
+        'year': data.year,
+        'timestamp': data.timestamp()
     }
 
 
