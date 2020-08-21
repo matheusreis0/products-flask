@@ -10,4 +10,4 @@ cors = CORS(app)
 
 api.add_resource(ProductController, '/api/product/', '/api/product/<uuid>', endpoint='products')
 
-app.run(debug=True)
+app.run()
